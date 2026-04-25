@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CDNVideoHub Docs</title>
+    <style>body{font-family:Inter,system-ui,sans-serif;max-width:900px;margin:0 auto;padding:24px;line-height:1.6}a{color:#1a73e8}code,pre{background:#f5f7fb;padding:2px 6px;border-radius:6px}pre{padding:12px;overflow:auto}nav a{margin-right:12px}</style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Лендинг</a>
+      <a href="docs.html">Docs</a>
+      <a href="faq.html">FAQ</a>
+      <a href="terms.html">Условия</a>
+      <a href="privacy.html">Политика</a>
+    </nav>
+    <h1>Документация CDNVideoHub</h1>
+    <p>Универсальный баланcер принимает URL VK / YouTube / RuTube и формирует единую ссылку на плеер.</p>
+
+    <h2>Быстрый старт</h2>
+    <pre><code>&lt;script src="https://your-domain/script.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+const video = window.CDNVideoHub.detectVideo('https://youtube.com/watch?v=dQw4w9WgXcQ');
+const embed = window.CDNVideoHub.buildUniversalEmbed('https://cdnvideohub.vercel.app', video);
+console.log(embed);
+&lt;/script&gt;</code></pre>
+
+    <h2>Формат ссылки</h2>
+    <p><code>https://your-domain/iframes/player?provider=youtube&id=VIDEO_ID&src=VIDEO_URL</code></p>
+
+    <h2>Поддерживаемые провайдеры</h2>
+    <ul>
+      <li>VK: <code>vk.com/video-1_2</code></li>
+      <li>YouTube: <code>youtube.com/watch?v=...</code>, <code>youtu.be/...</code>, <code>youtube.ru/watch?v=...</code></li>
+      <li>RuTube: <code>rutube.ru/video/...</code></li>
+    </ul>
+  </body>
+</html>
