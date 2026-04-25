@@ -1,32 +1,40 @@
 # CDNVideoHub Universal Balancer
 
-Универсальный фронтенд для генерации embed-ссылок и предпросмотра плеера.
+Production-ready заготовка универсального балансера embed-ссылок с поддержкой:
+
+- VK Video
+- YouTube (`youtube.com`, `youtu.be`, `youtube.ru`)
+- RuTube (`rutube.ru`)
 
 ## Что сделано
 
-- Полный лендинг + навигация: `index.html`.
-- Документация: `docs.html`.
-- FAQ: `faq.html`.
-- Условия: `terms.html`.
-- Политика конфиденциальности: `privacy.html`.
-- Новый чистый `script.js` без мусора/битых символов.
-- Заменен путь `ifremes` на корректный `/iframes/player`.
-- База по умолчанию: `https://cdnvideohub.vercel.app`.
-- Поддержка провайдеров:
-  - VK (`vk.com/video...`)
-  - YouTube (`youtube.com`, `youtu.be`, `youtube.ru`)
-  - RuTube (`rutube.ru/video/...`)
+- Сохранен основной `script.js` (без удаления ядра).
+- Обновлен адрес iframe-плеера:
+  - было: `https://player.cdnvideohub.com/s2/v2.5.10/frame`
+  - стало: `https://cdnvideohub.vercel.app/iframes/player`
+- Добавлен универсальный парсер и сборщик embed URL:
+  - `CDNVideoHub.detectVideo(input)`
+  - `CDNVideoHub.buildUniversalEmbed(baseUrl, video, options)`
+- Исправлены «битые» символы в студиях озвучки и расширен список студий.
+- Подготовлены страницы: Landing, Docs, FAQ, Terms, Privacy.
 
-## Быстрый пример
+## Быстрый старт
 
-```js
-const input = 'https://rutube.ru/video/0123456789abcdef/';
-const video = window.CDNVideoHub.detectVideo(input);
-const url = window.CDNVideoHub.buildUniversalEmbed('https://cdnvideohub.vercel.app', video);
-console.log(url);
+```html
+<script src="./script.js"></script>
+<script>
+  const parsed = CDNVideoHub.detectVideo('https://rutube.ru/video/0123456789abcdef/');
+  const embed = CDNVideoHub.buildUniversalEmbed('https://cdnvideohub.vercel.app', parsed);
+  console.log(embed);
+</script>
+```
+
+## Формат ссылки
+
+```text
+https://cdnvideohub.vercel.app/iframes/player?provider=<vk|youtube|rutube>&id=<video-id>
 ```
 
 ## Локальный запуск
 
 Открой `index.html` через любой статический сервер.
-
